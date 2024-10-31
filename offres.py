@@ -31,19 +31,19 @@ import subprocess
 
 # Open and load the JSON file
 #prospects
-with open("customers.json", 'r') as file:
+with open("json/customers.json", 'r') as file:
     cust_table = json.load(file)
 #products and service    
-with open("sewer_products_services.json", 'r') as file:
+with open("json/sewer_products_services.json", 'r') as file:
     prod_table = json.load(file)
 # SOW paragraps
-with open("paragraphs.json", 'r') as file:
+with open("json/paragraphs.json", 'r') as file:
     parag_table = json.load(file)
 #buildings
-with open("buildings.json", 'r') as file:
+with open("json/buildings.json", 'r') as file:
     build_table = json.load(file)
 #offers    
-with open('offers.json', 'r') as file:
+with open('json/offers.json', 'r') as file:
     offers_table = json.load(file)
 
 
@@ -58,9 +58,6 @@ def clear_screen():
 
 #Start
 def start(cust_table, build_table, prod_table, offers_table, parag_table):
-    
-    clear_screen()    
-    print(tabulate([['Kanalys Offers']], tablefmt="heavy_grid"))
 
     x = True
     while x:
@@ -782,7 +779,6 @@ def create_letter(cust_table, cust_id, bom, content, build_table, build_id, offe
     #Add picture
     try:
         ligne += 17
-        print(path_schema)
         doc.add_heading('Schema des travaux', level=1)
         doc.add_picture(path_schema, height=Inches(2))
     except UnrecognizedImageError:
@@ -803,11 +799,11 @@ def create_letter(cust_table, cust_id, bom, content, build_table, build_id, offe
     
     # Save the document
     name_offer = offer_id + '.docx'
-    os.chdir('/Users/huguesbeyerman/Offres Canalys/Letters')
+    os.chdir('Letters')
     doc.save(name_offer)
-    offer_path = '/Users/huguesbeyerman/Offres Canalys/Letters/' + name_offer
+    offer_path = 'Letters/' + name_offer
     print("\nLetter template created successfully.")
-    os.chdir('/Users/huguesbeyerman/Offres Canalys')
+    os.chdir('..')
     return(offer_path, path_schema)
 
 
@@ -883,19 +879,19 @@ def create_offer_table(offers_table, offer_id, cust_id, build_id, bom, content, 
 def save_json(cust_table, build_table, offers_table, parag_table, prod_table):
     # Saving the list as a JSON file
     
-    with open('customers.json', 'w') as file:
+    with open('json/customers.json', 'w') as file:
         json.dump(cust_table, file, indent=4)
     
-    with open('offers.json', 'w') as file:
+    with open('json/offers.json', 'w') as file:
         json.dump(offers_table, file, indent=4)
         
-    with open('buildings.json', 'w') as file:
+    with open('json/buildings.json', 'w') as file:
         json.dump(build_table, file, indent=4)
 
-    with open('sewer_products_services.json', 'w') as file:
+    with open('json/sewer_products_services.json', 'w') as file:
         json.dump(prod_table, file, indent=4)
 
-    with open('paragraphs.json', 'w') as file:
+    with open('json/paragraphs.json', 'w') as file:
         json.dump(parag_table, file, indent=4)
 
     print('Fichiers sauvés')
@@ -1115,7 +1111,7 @@ def approve_offer(cust_table, build_table, prod_table, offers_table, parag_table
                     email = cust_table[cust_id]['email']
                     body = cust_table[cust_id]['titre'] + ' ' + cust_table[cust_id]['first_name'] + ' ' + cust_table[cust_id]['last_name']+ '\n' + parag_table['17']['Paragraph'].format(cust_table[cust_id]['street'], cust_table[cust_id]['number'], cust_table[cust_id]['postal_code'],cust_table[cust_id]['city'])
                     print(offers_table[offer_id]['Path'], type(offers_table[offer_id]['Path']))
-                    subprocess.run(['libreoffice', '--headless', '--convert-to', 'pdf', offers_table[offer_id]['Path'], '--outdir', '/Users/huguesbeyerman/Offres Canalys/Letters'])
+                    subprocess.run(['libreoffice', '--headless', '--convert-to', 'pdf', offers_table[offer_id]['Path'], '--outdir', 'Letters'])
                     attach = offers_table[offer_id]['Path'][:-4] + 'pdf'
                     print('attachement', attach)
                     titre = 'Kanalis offer ' + offer_id
@@ -1148,7 +1144,7 @@ def crop_image(offer_id):
     
     #identify available reports and schema
     print('\nlist of availabe reports and snapshots\n---------------------------------------')
-    os.chdir('/Users/huguesbeyerman/Offres Canalys/Chantiers')
+    os.chdir('Chantiers')
     print(os.listdir())
 
     y = True
@@ -1201,9 +1197,9 @@ def crop_image(offer_id):
                     x= False
 
     #load final schema in dedicated schma folder and return path
-    new_path_schema = '/Users/huguesbeyerman/Offres Canalys/Schema/schema '+ offer_id + path_schema[-4:]
-    os.rename(path_schema, new_path_schema)
-    os.chdir('/Users/huguesbeyerman/Offres Canalys')
+    new_path_schema = 'Schema/schema '+ offer_id + path_schema[-4:]
+    os.chdir('..')
+    os.rename('Chantiers/{0}'.format(path_schema), new_path_schema)
     return(new_path_schema)
             
 

@@ -1,0 +1,161 @@
+{
+    "1": {
+        "description": "d\u00e9placement",
+        "Paragraph": "Lorem ipsum dolor sit amet, consectetur {0} adipiscing elit. Pellentesque in magna vehicula, vehicula est sit amet, {1} condimentum nunc. Sed ut neque quam. Aliquam quis aliquet justo. Praesent pharetra, velit eu dapibus venenatis, lectus {2} velit gravida turpis, nec suscipit purus orci at ipsum. Nulla ac urna sit amet urna mollis malesuada. Morbi tincidunt sem non felis vehicula, non iaculis velit fermentum. Sed vulputate quam ac magna volutpat, nec vehicula arcu cursus. Maecenas at leo mauris. Nam efficitur interdum urna, vel auctor metus cursus sit amet.",
+        "elt": {
+            "0": "longueur",
+            "1": "largeur",
+            "2": "hauteur"
+        }
+    },
+    "2": {
+        "description": "montage \u00e9chaffaudage",
+        "Paragraph": "Aenean sit amet convallis magna. Nulla {0} facilisi. Vestibulum et justo a elit vulputate feugiat. Vestibulum sodales metus non enim sagittis, id fermentum leo consectetur. Mauris lacinia turpis nec magna {2} scelerisque, at malesuada libero scelerisque. Fusce posuere libero a nisi ultrices, {1} eget hendrerit augue tincidunt. Phasellus ut dignissim elit. Morbi id elit sem. In id scelerisque velit. Donec suscipit velit vel lorem posuere, sit amet congue ex interdum. Duis lacinia enim eu velit tincidunt, at fermentum lorem vehicula.",
+        "elt": {
+            "0": "longueur",
+            "1": "largeur",
+            "2": "hauteur"
+        }
+    },
+    "3": {
+        "description": "tranch\u00e9e",
+        "Paragraph": "Curabitur ultricies, lectus id facilisis {0} tincidunt, libero mi aliquet ligula, at laoreet turpis {1} leo ac est. Nullam ac arcu vitae erat accumsan varius. Aliquam erat volutpat. Ut semper, {2} mi nec pharetra ultricies, sem odio condimentum velit, id gravida erat orci at turpis. Phasellus id sapien felis. Quisque congue orci sed nulla efficitur, vitae vulputate dui feugiat. Suspendisse potenti. Sed scelerisque aliquam lorem, ut convallis ligula mollis id. Duis ut urna at tortor ultrices sodales. Fusce eget eros nisi. Proin tempor nisi eget neque elementum, vitae dictum velit lacinia.",
+        "elt": {
+            "0": "longueur",
+            "1": "largeur",
+            "2": "hauteur"
+        }
+    },
+    "4": {
+        "description": "analyse vid\u00e9o",
+        "Paragraph": "Maecenas interdum vestibulum ante sit amet {0} dignissim. Aenean sit amet sem id dolor efficitur suscipit sit amet {1} id risus. Cras fringilla ex non velit malesuada, vel vestibulum ligula blandit. Aenean gravida purus in diam {2} vulputate tincidunt. Integer mollis mauris at ex venenatis, eget hendrerit nisi tempus. Aliquam tincidunt sapien sit amet erat euismod congue. Duis scelerisque orci vitae leo facilisis, sit amet suscipit arcu eleifend. Praesent vel vestibulum ligula, non sollicitudin nisi. In sagittis fermentum purus, at viverra est gravida eget. Phasellus mollis ante ac libero fermentum congue.",
+        "elt": {
+            "0": "longueur",
+            "1": "largeur",
+            "2": "hauteur"
+        }
+    },
+    "5": {
+        "description": "d\u00e9bouchage",
+        "Paragraph": "Vivamus elementum orci ut lacus interdum auctor. Aliquam {0} scelerisque enim at viverra viverra. Etiam gravida sodales mi, at pretium {1} leo consectetur nec. Suspendisse finibus sem ac purus consectetur, at pulvinar magna condimentum. Donec {2} suscipit, turpis et vehicula efficitur, sem libero luctus lacus, ac rhoncus mi odio et nisi. Phasellus iaculis, eros sed facilisis tincidunt, dui tortor cursus nisi, sit amet rhoncus ex mauris id metus. Integer feugiat vel tortor sit amet convallis. Fusce bibendum arcu vitae velit pharetra malesuada. Nulla facilisi. Aenean sed metus et lectus finibus malesuada.",
+        "elt": {
+            "0": "longueur",
+            "1": "largeur",
+            "2": "hauteur"
+        }
+    },
+    "6": {
+        "description": "remplacement tuyauterie",
+        "Paragraph": "Phasellus ac tortor scelerisque, interdum lorem vitae, {0} dapibus metus. Donec vulputate augue quam, sed tristique leo volutpat ac. Suspendisse {1} eget felis fermentum, faucibus augue nec, aliquam magna. Pellentesque eu lectus eget nisl congue iaculis. Ut gravida mauris id felis iaculis, sed gravida libero sodales. Praesent malesuada odio sit amet tellus hendrerit, sed vehicula odio lacinia. Donec sed purus dui. Suspendisse {2} fringilla sapien sapien, vel tempus nunc fermentum sed. Etiam lacinia ligula risus, ut pharetra turpis cursus ac.",
+        "elt": {
+            "0": "longueur",
+            "1": "largeur",
+            "2": "hauteur"
+        }
+    },
+    "7": {
+        "description": "pompage",
+        "Paragraph": "Sed vitae urna non enim vehicula vehicula. Nulla {0} gravida gravida velit, eget molestie lacus malesuada sit amet. Donec malesuada {1} felis ac vehicula gravida. In fermentum tellus nec dui sagittis faucibus. Cras sed ipsum tincidunt, volutpat nisi ut, tincidunt erat. Nam non arcu vel mauris facilisis malesuada at sed nunc. Proin suscipit magna sit amet diam aliquam, sit amet lacinia neque consequat. {2} Pellentesque quis nulla sit amet odio facilisis convallis at et lorem. Fusce vehicula felis velit, sit amet facilisis erat iaculis in. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.",
+        "elt": {
+            "0": "longueur",
+            "1": "largeur",
+            "2": "hauteur"
+        }
+    },
+    "8": {
+        "description": "vidange",
+        "Paragraph": "Ut ut vestibulum nisi, at feugiat dolor. Phasellus {0} ullamcorper ligula et eros tincidunt, ac bibendum augue cursus. Nunc malesuada {1} posuere neque sit amet tincidunt. Aenean euismod arcu vitae lectus luctus pharetra. Donec {2} tristique nibh arcu, eget vulputate magna ullamcorper ac. Mauris vel justo at metus efficitur vehicula eget vitae libero. Nulla tempor nunc eget ex fermentum, non bibendum lacus dapibus. Integer aliquam scelerisque felis, non porta enim scelerisque vel. Quisque suscipit fermentum odio, sit amet dapibus enim laoreet non.",
+        "elt": {
+            "0": "longueur",
+            "1": "largeur",
+            "2": "hauteur"
+        }
+    },
+    "9": {
+        "description": "d\u00e9graissage",
+        "Paragraph": "Nulla ultricies turpis vitae lacus aliquet, {0} quis posuere ex condimentum. Integer lacinia sagittis lacus non {1} efficitur. Nunc bibendum vehicula dui ac ultrices. Suspendisse facilisis sollicitudin metus, vitae {2} rutrum elit congue sit amet. Duis dignissim, urna a suscipit faucibus, ante enim porttitor leo, sit amet mollis turpis urna vel est. Sed vitae fermentum elit, ut condimentum mi. Nulla sed nibh sapien. Duis efficitur nisi sit amet risus dapibus, vel congue tortor finibus. Nullam viverra auctor nisl, sit amet tincidunt dolor tristique nec. Nulla aliquet nibh eget vehicula placerat. Curabitur rhoncus libero ut libero feugiat, vel accumsan ipsum ultricies.",
+        "elt": {
+            "0": "longueur",
+            "1": "largeur",
+            "2": "hauteur"
+        }
+    },
+    "10": {
+        "description": "intro",
+        "Paragraph": "Suite \u00e0 notre visite de votre b\u00e2timent situ\u00e9 {0} {1} \u00e0 {2} {3} Brussels, nous avons le plaisir de vous soumettre notre offre: ",
+        "elt": {
+            "0": "street",
+            "1": "number",
+            "2": "CP",
+            "3": "city"
+        }
+    },
+    "11": {
+        "description": "conclusion",
+        "Paragraph": "Nous esp\u00e9rons que cette offre correspond \u00e0 vos attentes. N'h\u00e9sitez pas \u00e0 nous contactez si vous n\u00e9cessitez des \u00e9claircissements.",
+        "elt": {}
+    },
+    "12": {
+        "description": "curtage",
+        "Paragraph": "Nulla eget risus id neque dictum {0} cursus ut ac ipsum. Suspendisse sodales fringilla {1} sapien, ut tincidunt purus varius a. Nullam bibendum nisi ac fermentum aliquam. Quisque sit amet {2} ipsum nec metus scelerisque tempus. Donec dapibus tempor odio, vel congue ligula rhoncus eu. Nam eu lacus sit amet mauris ultricies faucibus. Etiam nec felis orci. Nullam vehicula justo ex, ac luctus dui dictum sit amet. Etiam dictum sem et sollicitudin bibendum. Ut laoreet mauris a justo rhoncus, ac viverra augue sodales.",
+        "elt": {
+            "0": "longueur",
+            "1": "largeur",
+            "2": "hauteur"
+        }
+    },
+    "13": {
+        "description": "cimentage",
+        "Paragraph": "Curabitur vel velit lorem. Suspendisse {0} potenti. In hac habitasse platea dictumst. {1} Sed egestas velit vel lacus consectetur, et bibendum neque vehicula. Nam aliquam tincidunt odio, vel scelerisque {2} dolor vulputate nec. Maecenas at velit felis. Proin volutpat velit eget augue vulputate vulputate. In consequat ipsum ac nibh fermentum, quis hendrerit ex vestibulum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.",
+        "elt": {
+            "0": "longueur",
+            "1": "largeur",
+            "2": "hauteur"
+        }
+    },
+    "14": {
+        "description": "d\u00e9montage",
+        "Paragraph": "Vivamus vehicula mi id eros {0} porttitor, sed fermentum enim vehicula. Sed suscipit {1} velit sed eros venenatis, id lobortis tortor suscipit. Integer ut turpis eget ante tempor efficitur sed a dui. Curabitur {2}  at turpis quis justo cursus elementum. Nulla tristique, ligula eget tincidunt fermentum, ante felis tincidunt lorem, vel luctus sem orci ut magna. Cras porttitor feugiat convallis. Integer sit amet augue id dui hendrerit consequat. Donec vel nulla in eros accumsan aliquet. Donec suscipit ipsum sed quam bibendum cursus.",
+        "elt": {
+            "0": "longueur",
+            "1": "largeur",
+            "2": "hauteur"
+        }
+    },
+    "15": {
+        "description": "nettoyage",
+        "Paragraph": "Etiam sit amet arcu a nulla {0} tristique tincidunt. Aenean aliquet diam in nulla egestas varius. In accumsan {1} volutpat ex, in venenatis lectus pharetra quis. Praesent et turpis eu erat feugiat efficitur {2} sed a mi. Aliquam a neque at libero tempor auctor. Nulla malesuada orci nec velit gravida aliquam. Donec sollicitudin mauris ac efficitur lacinia. Aliquam erat volutpat. Integer congue nisl in augue pharetra, et porttitor erat bibendum. Pellentesque et lorem at velit hendrerit elementum.",
+        "elt": {
+            "0": "longueur",
+            "1": "largeur",
+            "2": "hauteur"
+        }
+    },
+    "16": {
+        "description": "Rom\u00e9o",
+        "Paragraph": "An age-old vendetta between  {}  powerful families erupts into bloodshed. A group of  {}  masked Montagues risk further conflict by gatecrashing a Capulet party.",
+        "elt": {
+            "0": "Amount of families",
+            "1": "Amount of Montagues"
+        }
+    },
+    "17": {
+        "description": "Body Mail",
+        "Paragraph": "Suite \u00e0 notre visite de votre b\u00e2timent situ\u00e9 {0} {1} \u00e0 {2} {3} Brussels, nous avons le plaisir de vous soumettre notre offre.\nNous restons \u00e0 votre disposition pour toute information compl\u00e9mentaire.\nCordialement.\nFino",
+        "elt": {
+            "0": "street",
+            "1": "number",
+            "2": "CP",
+            "3": "city"
+        }
+    },
+    "18": {
+        "description": "Debugging",
+        "Paragraph": "In this tutorial, we will delve into the fundamentals of debugging {} Python code. We'll explore common {} error messages, leverage the community, and utilize {}print statements to identify and resolve issues. The primary goal is to identify and fix errors in your code, and the key to successful debugging lies in a systematic approach",
+        "elt": {
+            "0": "Amount of errors",
+            "1": "Amount of statements",
+            "2": "Amount of codes"
+        }
+    }
+}

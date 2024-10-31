@@ -1,0 +1,169 @@
+{
+    "1": {
+        "street": "Rue de la Loi",
+        "number": 16,
+        "postal_code": "1000",
+        "city": "Brussels",
+        "country": "Belgium",
+        "manager": "1"
+    },
+    "2": {
+        "street": "Boulevard Anspach",
+        "number": 20,
+        "postal_code": "1000",
+        "city": "Brussels",
+        "country": "Belgium",
+        "manager": "3"
+    },
+    "3": {
+        "street": "Avenue Louise",
+        "number": 120,
+        "postal_code": "1050",
+        "city": "Ixelles",
+        "country": "Belgium",
+        "manager": "5"
+    },
+    "4": {
+        "street": "Chauss\u00e9e de Waterloo",
+        "number": 225,
+        "postal_code": "1060",
+        "city": "Saint-Gilles",
+        "country": "Belgium",
+        "manager": "4"
+    },
+    "5": {
+        "street": "Rue du Tr\u00f4ne",
+        "number": 42,
+        "postal_code": "1050",
+        "city": "Ixelles",
+        "country": "Belgium",
+        "manager": "4"
+    },
+    "6": {
+        "street": "Place du Luxembourg",
+        "number": 7,
+        "postal_code": "1050",
+        "city": "Ixelles",
+        "country": "Belgium",
+        "manager": "2"
+    },
+    "7": {
+        "street": "Boulevard du Souverain",
+        "number": 89,
+        "postal_code": "1160",
+        "city": "Auderghem",
+        "country": "Belgium",
+        "manager": "7"
+    },
+    "8": {
+        "street": "Rue Belliard",
+        "number": 202,
+        "postal_code": "1040",
+        "city": "Etterbeek",
+        "country": "Belgium",
+        "manager": "2"
+    },
+    "9": {
+        "street": "Rue des Palais",
+        "number": 33,
+        "postal_code": "1030",
+        "city": "Schaerbeek",
+        "country": "Belgium",
+        "manager": "7"
+    },
+    "10": {
+        "street": "Avenue Franklin Roosevelt",
+        "number": 50,
+        "postal_code": "1050",
+        "city": "Ixelles",
+        "country": "Belgium",
+        "manager": "1"
+    },
+    "11": {
+        "street": "Chauss\u00e9e de Wavre",
+        "number": 310,
+        "postal_code": "1040",
+        "city": "Etterbeek",
+        "country": "Belgium",
+        "manager": "4"
+    },
+    "12": {
+        "street": "av des arts",
+        "number": "20",
+        "postal_code": "1000",
+        "city": "Bruxelles",
+        "country": "Belgique",
+        "manager": "21"
+    },
+    "13": {
+        "street": "rue plasky",
+        "number": "30",
+        "postal_code": "1030",
+        "city": "Bruxelles",
+        "country": "Belgique",
+        "manager": "16"
+    },
+    "14": {
+        "street": "Diane Parkway",
+        "number": "561",
+        "postal_code": "72467",
+        "city": "Patrickport",
+        "country": "Marshall Islands",
+        "manager": "10",
+        "account_creation_date": "21-10-24"
+    },
+    "15": {
+        "street": "Diane Parkway",
+        "number": "561",
+        "postal_code": "72467",
+        "city": "Patrickport",
+        "country": "Marshall Islands",
+        "manager": "10",
+        "account_creation_date": "23-10-24"
+    },
+    "16": {
+        "street": "Mont des Arts",
+        "number": "5",
+        "postal_code": "1000",
+        "city": "Bruxelles",
+        "country": "Belgique",
+        "manager": "10",
+        "account_creation_date": "23-10-24"
+    },
+    "17": {
+        "street": "Bd d'Avroy",
+        "number": "3",
+        "postal_code": "4000",
+        "city": "Li\u00e8ge",
+        "country": "Belgique",
+        "manager": "22",
+        "account_creation_date": "24-10-24"
+    },
+    "18": {
+        "street": "Bd E Jacqmain",
+        "number": "4",
+        "postal_code": "1040",
+        "city": "Bxl",
+        "country": "Belgium",
+        "manager": "23",
+        "account_creation_date": "30-10-24"
+    },
+    "19": {
+        "street": "Av Brugmann",
+        "number": "76",
+        "postal_code": "1080",
+        "city": "Bxl",
+        "country": "Belgium",
+        "manager": "24",
+        "account_creation_date": "30-10-24"
+    },
+    "20": {
+        "street": "Place St\u00e9phanie",
+        "number": "2",
+        "postal_code": "1040",
+        "city": "Bxl",
+        "country": "Belgium",
+        "manager": "4",
+        "account_creation_date": "30-10-24"
+    }
+}

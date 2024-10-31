@@ -1,0 +1,294 @@
+{
+    "23-10-24-1": {
+        "Customer": "10",
+        "Building": "15",
+        "Bom": {
+            "2": {
+                "ID": "4",
+                "description": "Sewer camera inspection (per hour)",
+                "unit_selling_price": 180.0,
+                "qty": 5,
+                "discount": 20,
+                "line price": 720.0
+            }
+        },
+        "SOW": {
+            "2": "Maecenas interdum vestibulum ante sit amet dignissim. Aenean sit amet sem id dolor efficitur suscipit sit amet id risus. Cras fringilla ex non velit malesuada, vel vestibulum ligula blandit. Aenean gravida purus in diam vulputate tincidunt. Integer mollis mauris at ex venenatis, eget hendrerit nisi tempus. Aliquam tincidunt sapien sit amet erat euismod congue. Duis scelerisque orci vitae leo facilisis, sit amet suscipit arcu eleifend. Praesent vel vestibulum ligula, non sollicitudin nisi. In sagittis fermentum purus, at viverra est gravida eget. Phasellus mollis ante ac libero fermentum congue."
+        },
+        "Path": "/Users/huguesbeyerman/Offres Canalys/Letters/23-10-24-1.docx",
+        "Status": "in approval",
+        "Created": "23-10-24",
+        "Schema": "/Users/huguesbeyerman/Offres Canalys/Schema/schema 23-10-24-2.jpg"
+    },
+    "23-10-24-2": {
+        "Customer": "10",
+        "Building": "14",
+        "Bom": {
+            "2": {
+                "ID": "5",
+                "description": "High-pressure sewer cleaning (per meter)",
+                "unit_selling_price": 80.0,
+                "qty": 3,
+                "discount": 10,
+                "line price": 216.0
+            },
+            "3": {
+                "ID": "4",
+                "description": "Sewer camera inspection (per hour)",
+                "unit_selling_price": 180.0,
+                "qty": 3,
+                "discount": 10,
+                "line price": 486.0
+            }
+        },
+        "SOW": {
+            "1": {
+                "description": "d\u00e9bouchage",
+                "Paragraph": "Vivamus elementum orci ut lacus interdum auctor. Aliquam {0} scelerisque enim at viverra viverra. Etiam gravida sodales mi, at pretium {1} leo consectetur nec. Suspendisse finibus \n    sem ac purus consectetur, at pulvinar magna condimentum. Donec {2} suscipit, turpis et vehicula efficitur, sem libero luctus lacus, ac rhoncus mi odio et nisi. Phasellus iaculis, eros sed \n    facilisis tincidunt, dui tortor cursus nisi, sit amet rhoncus ex mauris id metus. Integer feugiat vel tortor sit amet convallis. Fusce bibendum arcu vitae velit pharetra malesuada. \n    Nulla facilisi. Aenean sed metus et lectus finibus malesuada.",
+                "elt": {
+                    "0": "6978",
+                    "1": "63646",
+                    "2": "079097"
+                }
+            }
+        },
+        "Path": "/Users/huguesbeyerman/Offres Canalys/Letters/23-10-24-2.docx",
+        "Status": "in approval",
+        "Created": "24-10-24",
+        "Schema": "/Users/huguesbeyerman/Offres Canalys/Schema/schema 23-10-24-2.jpg"
+    },
+    "23-10-24-3": {
+        "Customer": "22",
+        "Building": "17",
+        "Bom": {
+            "2": {
+                "ID": "5",
+                "description": "High-pressure sewer cleaning (per meter)",
+                "unit_selling_price": 80.0,
+                "qty": 4,
+                "discount": 20,
+                "line price": 256.0
+            },
+            "3": {
+                "ID": "11",
+                "description": "Laminage",
+                "unit_selling_price": 100.0,
+                "qty": 4,
+                "discount": 10,
+                "line price": 360.0
+            }
+        },
+        "SOW": {
+            "1": {
+                "description": "Python files",
+                "Paragraph": "The default encoding of {} Python source files is\u00a0UTF-8. JSON, TOML, YAML use UTF-8. Most text editors, including {} Visual Studio Code and Windows Notepad use UTF-8 by default.",
+                "elt": {
+                    "0": "8696",
+                    "1": "969584"
+                }
+            },
+            "2": {
+                "description": "Python functions",
+                "Paragraph": "Count() is a Python built-in function that returns the number of times an object appears in a {} list. The count() method is one of Python's built-in functions. It returns the number of times a given value occurs in a string or a list, as the name implies.",
+                "elt": {
+                    "0": "75647"
+                }
+            },
+            "3": {
+                "description": "d\u00e9bouchage",
+                "Paragraph": "Vivamus elementum orci ut lacus interdum auctor. Aliquam {0} scelerisque enim at viverra viverra. Etiam gravida sodales mi, at pretium {1} leo consectetur nec. Suspendisse finibus sem ac purus consectetur, at pulvinar magna condimentum. Donec {2} suscipit, turpis et vehicula efficitur, sem libero luctus lacus, ac rhoncus mi odio et nisi. Phasellus iaculis, eros sed facilisis tincidunt, dui tortor cursus nisi, sit amet rhoncus ex mauris id metus. Integer feugiat vel tortor sit amet convallis. Fusce bibendum arcu vitae velit pharetra malesuada. Nulla facilisi. Aenean sed metus et lectus finibus malesuada.",
+                "elt": {
+                    "0": "58758",
+                    "1": "3543",
+                    "2": "969689"
+                }
+            },
+            "4": {
+                "description": "Rom\u00e9o",
+                "Paragraph": "An age-old vendetta between  {}  powerful families erupts into bloodshed. A group of  {}  masked Montagues risk further conflict by gatecrashing a Capulet party.",
+                "elt": {
+                    "0": "2",
+                    "1": "6"
+                }
+            }
+        },
+        "Path": "/Users/huguesbeyerman/Offres Canalys/Letters/23-10-24-3.docx",
+        "Status": "in approval",
+        "Created": "24-10-24",
+        "Schema": "/Users/huguesbeyerman/Offres Canalys/Schema/schema 23-10-24-2.jpg"
+    },
+    "23-10-24-4": {
+        "Customer": "10",
+        "Building": "14",
+        "Bom": {
+            "2": {
+                "ID": "4",
+                "description": "Sewer camera inspection (per hour)",
+                "unit_selling_price": 180.0,
+                "qty": 3,
+                "discount": 20,
+                "line price": 432.0
+            }
+        },
+        "SOW": {
+            "1": {
+                "description": "montage \u00e9chaffaudage",
+                "Paragraph": "Aenean sit amet convallis magna. Nulla {0} facilisi. Vestibulum et justo a elit vulputate feugiat. Vestibulum sodales metus non enim sagittis, id fermentum leo consectetur. Mauris lacinia turpis nec magna {2} scelerisque, at malesuada libero scelerisque. Fusce posuere libero a nisi ultrices, {1} eget hendrerit augue tincidunt. Phasellus ut dignissim elit. Morbi id elit sem. In id scelerisque velit. Donec suscipit velit vel lorem posuere, sit amet congue ex interdum. Duis lacinia enim eu velit tincidunt, at fermentum lorem vehicula.",
+                "elt": {
+                    "0": "887",
+                    "1": "858",
+                    "2": "8587"
+                }
+            }
+        },
+        "Path": "/Users/huguesbeyerman/Offres Canalys/Letters/23-10-24-4.docx",
+        "Status": "approved",
+        "Created": "23-10-24",
+        "Schema": "/Users/huguesbeyerman/Offres Canalys/Schema/schema 23-10-24-2.jpg"
+    },
+    "26-10-24-1": {
+        "Customer": "10",
+        "Building": "14",
+        "Bom": {
+            "2": {
+                "ID": "3",
+                "description": "Sewer blockage removal (per blockage)",
+                "unit_selling_price": 200.0,
+                "qty": 4,
+                "discount": 10,
+                "line price": 720.0
+            }
+        },
+        "SOW": {
+            "1": {
+                "description": "montage \u00e9chaffaudage",
+                "Paragraph": "Aenean sit amet convallis magna. Nulla {0} facilisi. Vestibulum et justo a elit vulputate feugiat. Vestibulum sodales metus non enim sagittis, id fermentum leo consectetur. Mauris lacinia turpis nec magna {2} scelerisque, at malesuada libero scelerisque. Fusce posuere libero a nisi ultrices, {1} eget hendrerit augue tincidunt. Phasellus ut dignissim elit. Morbi id elit sem. In id scelerisque velit. Donec suscipit velit vel lorem posuere, sit amet congue ex interdum. Duis lacinia enim eu velit tincidunt, at fermentum lorem vehicula.",
+                "elt": {
+                    "0": "535",
+                    "1": "25245",
+                    "2": "5235"
+                }
+            }
+        },
+        "Path": "/Users/huguesbeyerman/Offres Canalys/Letters/26-10-24-1.docx",
+        "Status": "in approval",
+        "Created": "26-10-24",
+        "Schema": "/Users/huguesbeyerman/Offres Canalys/Schema/schema 23-10-24-2.jpg"
+    },
+    "26-10-24-2": {
+        "Customer": "3",
+        "Building": "2",
+        "Bom": {
+            "2": {
+                "ID": "6",
+                "description": "Sewer relining (per meter)",
+                "unit_selling_price": 250.0,
+                "qty": 3,
+                "discount": 10,
+                "line price": 675.0
+            }
+        },
+        "SOW": {
+            "1": {
+                "description": "analyse vid\u00e9o",
+                "Paragraph": "Maecenas interdum vestibulum ante sit amet {0} dignissim. Aenean sit amet sem id dolor efficitur suscipit sit amet {1} id risus. Cras fringilla ex non velit malesuada, vel vestibulum ligula blandit. Aenean gravida purus in diam {2} vulputate tincidunt. Integer mollis mauris at ex venenatis, eget hendrerit nisi tempus. Aliquam tincidunt sapien sit amet erat euismod congue. Duis scelerisque orci vitae leo facilisis, sit amet suscipit arcu eleifend. Praesent vel vestibulum ligula, non sollicitudin nisi. In sagittis fermentum purus, at viverra est gravida eget. Phasellus mollis ante ac libero fermentum congue.",
+                "elt": {
+                    "0": "85758",
+                    "1": "8585",
+                    "2": "7474"
+                }
+            }
+        },
+        "Path": "/Users/huguesbeyerman/Offres Canalys/Letters/26-10-24-2.docx",
+        "Status": "in approval",
+        "Created": "26-10-24",
+        "Schema": "/Users/huguesbeyerman/Offres Canalys/Schema/schema 23-10-24-2.jpg"
+    },
+    "27-10-24-1": {
+        "Customer": "10",
+        "Building": "14",
+        "Bom": {
+            "2": {
+                "ID": "3",
+                "description": "Sewer blockage removal (per blockage)",
+                "unit_selling_price": 200.0,
+                "qty": 4,
+                "discount": 20,
+                "line price": 640.0
+            }
+        },
+        "SOW": {
+            "1": {
+                "description": "curtage",
+                "Paragraph": "Nulla eget risus id neque dictum {0} cursus ut ac ipsum. Suspendisse sodales fringilla {1} sapien, ut tincidunt purus varius a. Nullam bibendum nisi ac fermentum aliquam. Quisque sit amet {2} ipsum nec metus scelerisque tempus. Donec dapibus tempor odio, vel congue ligula rhoncus eu. Nam eu lacus sit amet mauris ultricies faucibus. Etiam nec felis orci. Nullam vehicula justo ex, ac luctus dui dictum sit amet. Etiam dictum sem et sollicitudin bibendum. Ut laoreet mauris a justo rhoncus, ac viverra augue sodales.",
+                "elt": {
+                    "0": "4235",
+                    "1": "255",
+                    "2": "2535"
+                }
+            }
+        },
+        "Path": "/Users/huguesbeyerman/Offres Canalys/Letters/27-10-24-1.docx",
+        "Status": "in approval",
+        "Created": "27-10-24",
+        "Schema": "/Users/huguesbeyerman/Offres Canalys/Schema/schema 23-10-24-2.jpg"
+    },
+    "30-10-24-1": {
+        "Customer": "4",
+        "Building": "5",
+        "Bom": {
+            "2": {
+                "ID": "5",
+                "description": "High-pressure sewer cleaning (per meter)",
+                "unit_selling_price": 80.0,
+                "qty": 8,
+                "discount": 10,
+                "line price": 576.0
+            }
+        },
+        "SOW": {
+            "1": {
+                "description": "pompage",
+                "Paragraph": "Sed vitae urna non enim vehicula vehicula. Nulla {0} gravida gravida velit, eget molestie lacus malesuada sit amet. Donec malesuada {1} felis ac vehicula gravida. In fermentum tellus nec dui sagittis faucibus. Cras sed ipsum tincidunt, volutpat nisi ut, tincidunt erat. Nam non arcu vel mauris facilisis malesuada at sed nunc. Proin suscipit magna sit amet diam aliquam, sit amet lacinia neque consequat. {2} Pellentesque quis nulla sit amet odio facilisis convallis at et lorem. Fusce vehicula felis velit, sit amet facilisis erat iaculis in. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.",
+                "elt": {
+                    "0": "77",
+                    "1": "563",
+                    "2": "65"
+                }
+            }
+        },
+        "Path": "/Users/huguesbeyerman/Offres Canalys/Letters/30-10-24-1.docx",
+        "Status": "approved",
+        "Created": "30-10-24",
+        "Schema": "/Users/huguesbeyerman/Offres Canalys/Schema/schema 30-10-24-1.jpg"
+    },
+    "31-10-24-1": {
+        "Customer": "4",
+        "Building": "5",
+        "Bom": {
+            "2": {
+                "ID": "5",
+                "description": "High-pressure sewer cleaning (per meter)",
+                "unit_selling_price": 80.0,
+                "qty": 3,
+                "discount": 10,
+                "line price": 216.0
+            }
+        },
+        "SOW": {
+            "1": {
+                "description": "remplacement tuyauterie",
+                "Paragraph": "Phasellus ac tortor scelerisque, interdum lorem vitae, {0} dapibus metus. Donec vulputate augue quam, sed tristique leo volutpat ac. Suspendisse {1} eget felis fermentum, faucibus augue nec, aliquam magna. Pellentesque eu lectus eget nisl congue iaculis. Ut gravida mauris id felis iaculis, sed gravida libero sodales. Praesent malesuada odio sit amet tellus hendrerit, sed vehicula odio lacinia. Donec sed purus dui. Suspendisse {2} fringilla sapien sapien, vel tempus nunc fermentum sed. Etiam lacinia ligula risus, ut pharetra turpis cursus ac.",
+                "elt": {
+                    "0": "2434",
+                    "1": "24",
+                    "2": "234"
+                }
+            }
+        },
+        "Path": "Letters/31-10-24-1.docx",
+        "Status": "in approval",
+        "Created": "31-10-24",
+        "Schema": "Schema/schema 31-10-24-1.jpg"
+    }
+}
