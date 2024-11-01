@@ -22,7 +22,7 @@
     },
     "23-10-24-2": {
         "Customer": "10",
-        "Building": "14",
+        "Building": "16",
         "Bom": {
             "2": {
                 "ID": "5",
@@ -50,11 +50,19 @@
                     "1": "63646",
                     "2": "079097"
                 }
+            },
+            "2": {
+                "description": "Mac Terminal",
+                "Paragraph": "In the Python interpreter or terminal, you can exit {} Python by pressing Ctrl + Z on Windows or\u00a0Ctrl + D\u00a0on macOS. These {} shortcuts signal the interpreter that the file is complete and tell it to terminate Python.",
+                "elt": {
+                    "0": "2",
+                    "1": "65"
+                }
             }
         },
-        "Path": "/Users/huguesbeyerman/Offres Canalys/Letters/23-10-24-2.docx",
+        "Path": "Letters/23-10-24-2.docx",
         "Status": "in approval",
-        "Created": "24-10-24",
+        "Created": "31-10-24",
         "Schema": "/Users/huguesbeyerman/Offres Canalys/Schema/schema 23-10-24-2.jpg"
     },
     "23-10-24-3": {
@@ -290,5 +298,63 @@
         "Status": "in approval",
         "Created": "31-10-24",
         "Schema": "Schema/schema 31-10-24-1.jpg"
+    },
+    "31-10-24-2": {
+        "Customer": "25",
+        "Building": "21",
+        "Bom": {
+            "2": {
+                "ID": "6",
+                "description": "Sewer relining (per meter)",
+                "unit_selling_price": 250.0,
+                "qty": 8,
+                "discount": 20,
+                "line price": 1600.0
+            }
+        },
+        "SOW": {
+            "1": {
+                "description": "tranch\u00e9e",
+                "Paragraph": "Curabitur ultricies, lectus id facilisis {0} tincidunt, libero mi aliquet ligula, at laoreet turpis {1} leo ac est. Nullam ac arcu vitae erat accumsan varius. Aliquam erat volutpat. Ut semper, {2} mi nec pharetra ultricies, sem odio condimentum velit, id gravida erat orci at turpis. Phasellus id sapien felis. Quisque congue orci sed nulla efficitur, vitae vulputate dui feugiat. Suspendisse potenti. Sed scelerisque aliquam lorem, ut convallis ligula mollis id. Duis ut urna at tortor ultrices sodales. Fusce eget eros nisi. Proin tempor nisi eget neque elementum, vitae dictum velit lacinia.",
+                "elt": {
+                    "0": "88",
+                    "1": "75876",
+                    "2": "77"
+                }
+            }
+        },
+        "Path": "Letters/31-10-24-2.docx",
+        "Status": "approved",
+        "Created": "31-10-24",
+        "Schema": "Schema/schema 31-10-24-2.jpg"
+    },
+    "01-11-24-1": {
+        "Customer": "6",
+        "Building": "22",
+        "Bom": {
+            "2": {
+                "ID": "7",
+                "description": "Emergency sewer repair (callout fee)",
+                "unit_selling_price": 300.0,
+                "qty": 2,
+                "discount": 10,
+                "line price": 540.0
+            }
+        },
+        "SOW": {
+            "1": {
+                "description": "d\u00e9bouchage",
+                "Paragraph": "Vivamus elementum orci ut lacus interdum auctor. Aliquam {0} scelerisque enim at viverra viverra. Etiam gravida sodales mi, at pretium {1} leo consectetur nec. Suspendisse finibus sem ac purus consectetur, at pulvinar magna condimentum. Donec {2} suscipit, turpis et vehicula efficitur, sem libero luctus lacus, ac rhoncus mi odio et nisi. Phasellus iaculis, eros sed facilisis tincidunt, dui tortor cursus nisi, sit amet rhoncus ex mauris id metus. Integer feugiat vel tortor sit amet convallis. Fusce bibendum arcu vitae velit pharetra malesuada. Nulla facilisi. Aenean sed metus et lectus finibus malesuada.",
+                "elt": {
+                    "0": "567",
+                    "1": "43",
+                    "2": "8"
+                }
+            }
+        },
+        "Path": "Letters/01-11-24-1.docx",
+        "Status": "approved",
+        "Created": "01-11-24",
+        "Schema": "Schema/schema 01-11-24-1.jpg"
     }
 }

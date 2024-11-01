@@ -1,0 +1,67 @@
+{
+    "1": {
+        "description": "Sewer line repair (per meter)",
+        "unit_selling_price": 150.0,
+        "unit_cost": 90.0
+    },
+    "2": {
+        "description": "Sewer maintenance inspection (per hour)",
+        "unit_selling_price": 100.0,
+        "unit_cost": 60.0
+    },
+    "3": {
+        "description": "Sewer blockage removal (per blockage)",
+        "unit_selling_price": 200.0,
+        "unit_cost": 120.0
+    },
+    "4": {
+        "description": "Sewer camera inspection (per hour)",
+        "unit_selling_price": 180.0,
+        "unit_cost": 100.0
+    },
+    "5": {
+        "description": "High-pressure sewer cleaning (per meter)",
+        "unit_selling_price": 80.0,
+        "unit_cost": 50.0
+    },
+    "6": {
+        "description": "Sewer relining (per meter)",
+        "unit_selling_price": 250.0,
+        "unit_cost": 160.0
+    },
+    "7": {
+        "description": "Emergency sewer repair (callout fee)",
+        "unit_selling_price": 300.0,
+        "unit_cost": 180.0
+    },
+    "8": {
+        "description": "Sewer odor inspection and repair (per session)",
+        "unit_selling_price": 120.0,
+        "unit_cost": 75.0
+    },
+    "9": {
+        "description": "Sewer maintenance contract (annual)",
+        "unit_selling_price": 1000.0,
+        "unit_cost": 650.0
+    },
+    "10": {
+        "description": "Sewer camera rental (per day)",
+        "unit_selling_price": 250.0,
+        "unit_cost": 120.0
+    },
+    "11": {
+        "description": "Laminage",
+        "unit_selling_price": 100.0,
+        "unit_cost": 80.0
+    },
+    "12": {
+        "description": "5",
+        "unit_selling_price": 9.0,
+        "unit_cost": 97.0
+    },
+    "13": {
+        "description": "Fraisage",
+        "unit_selling_price": 120.0,
+        "unit_cost": 90.0
+    }
+}

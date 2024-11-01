@@ -157,5 +157,13 @@
             "1": "Amount of statements",
             "2": "Amount of codes"
         }
+    },
+    "19": {
+        "description": "Mac Terminal",
+        "Paragraph": "In the Python interpreter or terminal, you can exit {} Python by pressing Ctrl + Z on Windows or\u00a0Ctrl + D\u00a0on macOS. These {} shortcuts signal the interpreter that the file is complete and tell it to terminate Python.",
+        "elt": {
+            "0": "Amount Prg",
+            "1": "Amount shortcuts"
+        }
     }
 }
