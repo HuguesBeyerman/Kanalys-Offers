@@ -45,13 +45,14 @@ class Offer:
         self.SOW = content
         self.Path: offer_path 
         self.Schema: path_schema
-        offers_table[self.offer_id] = {'Customer': self.Customer, 'Building': self.Building, 'Bom': self.Bom, 'SOW': self.Sow,
+        offers_table[self.offer_id] = {'Customer': self.Customer, 'Building': self.Building, 'Bom': self.Bom, 'SOW': self.SOW,
                                   'Path': self.Path, 'Status': self.Status,
                                   'Created': self.Created,
                                   'Schema': self.Schema}
         return(offers_table)
     
     def import_offer(self, id, offers_table):
+        self.offer_id = id
         self.Customer = offers_table[id]['Customer']
         self.Building = offers_table[id]['Building']
         self.Bom = offers_table[id]['Bom']
@@ -182,7 +183,6 @@ class Building:
         self.city= 'City'
         self.country= 'Country'
         self.manager = 'cust_id'
-        self.account_creation_date = dt.today().date().strftime('%d-%m-%y')
 
     def encode_build (self, Street, Number, CP, City, Country, cust):       
         self.street = Street
@@ -193,9 +193,12 @@ class Building:
         self.manager = cust.cust_id
 
     def define_build_id(self,build_table):
-        id_list = list(build_table.keys())
-        id_list.sort(reverse = True, key = int)
-        self.build_id = str(int(id_list[0]) + 1)
+        try:
+            id_list = list(build_table.keys())
+            id_list.sort(reverse = True, key = int)
+            self.build_id = str(int(id_list[0]) + 1)
+        except:
+            self.build_id = str(len(build_table.keys())+1)
 
     def encode_cust_address(self, cust):
         self.street = cust.street
@@ -213,7 +216,6 @@ class Building:
         self.city = build_table[id]['city']
         self.country = build_table[id]['country']
         self.manager = build_table[id]['manager']
-        self.account_creation_date = build_table[id]['account_creation_date']
 
     def __str__ (self):
         return ('{0}, {1}, {2}, {3}'.format(self.street, self.number, self.postal_code, self.city))
@@ -222,11 +224,10 @@ class Building:
         build_table[self.build_id] = {
                             'street': self.street,
                             'number' : self.number, 
-                            'number' : self.postal_code,
+                            'postal_code' : self.postal_code,
                             'city' : self.city,
                             'country' : self.country,
-                            'manager' : self.manager,
-                            'account_creation_date' : self.account_creation_date}  
+                            'manager' : self.manager}  
         return(build_table)
 
 class Product:
@@ -285,8 +286,8 @@ class Bom:
                     'prod_id': self.prod_id,
                     'description' : self.description,
                     'unit_selling_price' : self.unit_selling_price,
-                    'discount' : self.discount,
                     'qty' : self.qty,
+                    'discount' : self.discount,                  
                     'line_price' : self.line_price}
         return(bom_table)
 
@@ -398,26 +399,28 @@ def start():
     while x:
         click.clear()   
         click.echo(tabulate([['Kanalys Offers']], tablefmt="heavy_grid"))
-        choice = click.prompt('1.Encode new offer, 2.Modify existing offer, 3.Approve offer, 4.Quit ', type=click.Choice(['1', '2', '3', '4']))
+        choice = click.prompt('\n1.Encode new offer, 2.Modify existing offer, 3.Approve offer, 4.Quit ', type=click.Choice(['1', '2', '3', '4']))
         
         if choice == '1':
             cust_table, build_table, prod_table, offers_table, parag_table = create_offer(cust_table, build_table, prod_table, offers_table, parag_table)
 
         elif choice == '2':
             #publish the offers selection   
-            query = click.prompt('Search on customer name :')
+            query = click.prompt('Search on customer name :', default='')
             if query == None:
                 query = 'All'
             try:
                 beg = min(dt.strptime(d['Created'], '%d-%m-%y') for d in offers_table.values())
-                date_beg= dt.strptime(click.prompt("Earliest date (format 'dd-mm-yy') "),'%d-%m-%y', default=beg)
-            except ValueError:
+                date_beg= click.prompt("Earliest date (format 'dd-mm-yy') ", default=beg)
+                date_beg= dt.strptime(date_beg,'%d-%m-%y')
+            except:
                 date_beg = dt.strptime('01-01-00', '%d-%m-%y')
 
             try:
                 lat = max(dt.strptime(d['Created'], '%d-%m-%y') for d in offers_table.values())
-                date_end = dt.strptime(click.prompt("Latest date (format 'dd-mm-yy') "), '%d-%m-%y', default=late)
-            except ValueError:
+                date_end = click.prompt("Latest date (format 'dd-mm-yy') ", default=lat)
+                date_end = dt.strptime(date_end, '%d-%m-%y')
+            except:
                 date_end = dt.today()
                 
             offer_list = CLI.create_list_offers(offers_table, cust_table, s=query, date_beg=date_beg, date_end=date_end)
@@ -426,13 +429,14 @@ def start():
             offer_id = click.prompt('\nWhich offer ID do you want to modify? ', type=click.Choice(offer_list))
             offer = Offer()
                 
-            if offers_table[offer_id]['Status'] != 'in approval':               
+            if offers_table[offer_id]['Status'] != 'in approval': 
+                offer.import_offer(offer_id, offers_table)
                 offer.define_offer_id(offers_table)
                 click.echo('This offer has already been sent. An new one will be created with ID nbr ' + str(offer.offer_id))
             else:
                 offer.import_offer(offer_id, offers_table)
                 
-            cust_table, build_table, prod_table, offers_table, parag_table = modify_offer(new_offer_id, cust_table, build_table, prod_table, offers_table, parag_table)
+            cust_table, build_table, prod_table, offers_table, parag_table = modify_offer(offer, cust_table, build_table, prod_table, offers_table, parag_table)
 
         elif choice == '3':
             CLI.approve_offer(cust_table, build_table, prod_table, offers_table, parag_table)
@@ -447,12 +451,12 @@ def start():
 def create_offer(cust_table, build_table, prod_table, offers_table, parag_table):
     offer = Offer()
     offer.define_offer_id(offers_table)
-    cust_table, cust = CLI.select_client(cust_table, offer)
-    build_table, build = CLI.select_building(build_table, cust, offer)
+    cust_table, cust = CLI.select_client(cust_table, build_table, offers_table, parag_table, prod_table, offer)
+    build_table, build = CLI.select_building(cust_table, build_table, offers_table, parag_table, prod_table, cust, offer)
     bom_table = {}
-    prod_table, bom_table = CLI.select_bom(prod_table, bom_table, offer)
+    prod_table, bom_table = CLI.select_bom(cust_table, build_table, offers_table, parag_table, prod_table, bom_table, offer)
     content = {}
-    parag_table, content = CLI.select_content(parag_table, content, offer)
+    parag_table, content = CLI.select_content(cust_table, build_table, offers_table, parag_table, prod_table, content, offer)
     path_schema = crop_image(offer)
     z=True
     while z:
@@ -461,7 +465,7 @@ def create_offer(cust_table, build_table, prod_table, offers_table, parag_table)
         image = Image.open(path_schema)
         image.show()
         display_offre(bom_tabulate, content, offer, cust, parag_table, build)
-        z, cust, cust_table, build, build_table, bom_table, content, prod_table, parag_table, path_schema = CLI.change_offer(cust, cust_table, build, build_table, bom_table, content, prod_table, parag_table, offer, path_schema)
+        z, cust, cust_table, build, build_table, bom_table, content, prod_table, parag_table, path_schema = CLI.change_offer(cust, cust_table, build, build_table, bom_table, content, prod_table, parag_table, offer, path_schema, offers_table)
 
     bom_tabulate = tabulate_bom_table(bom_table)
     offer_path, path_schema = create_letter(cust_table, cust, bom_table, content, build_table, build, offer, bom_tabulate, parag_table, path_schema)
@@ -471,18 +475,21 @@ def create_offer(cust_table, build_table, prod_table, offers_table, parag_table)
 
 'offer modification process'
 def modify_offer(offer, cust_table, build_table, prod_table, offers_table, parag_table):
-    bom = offer.Bom
-    content = offer.Sow
-    cust_id = offer.Customer
-    build_id = offer.build
+    bom_table = offer.Bom
+    print('import Baom_table: ', bom_table)
+    content = offer.SOW
+    cust = Customer()
+    cust.import_cust(offer.Customer, cust_table)
+    build = Building()
+    build.import_build(offer.Building, build_table)
     path_schema = offer.Schema
     
     bom_tabulate = tabulate_bom_table(bom_table)
     image = Image.open(path_schema)
     image.show()
     display_offre(bom_tabulate, content, offer, cust, parag_table, build)
-    z, cust, cust_table, build, build_table, bom_table, content, prod_table, parag_table, path_schema = CLI.change_offer(cust, cust_table, build, build_table, bom_table, content, prod_table, parag_table, offer, path_schema)
-    bom_table = create_bom_table(bom)
+    z, cust, cust_table, build, build_table, bom_table, content, prod_table, parag_table, path_schema = CLI.change_offer(cust, cust_table, build, build_table, bom_table, content, prod_table, parag_table, offer, path_schema, offers_table)
+    bom_tabulate = tabulate_bom_table(bom_table)
     offer_path, path_schema = create_letter(cust_table, cust, bom_table, content, build_table, build, offer, bom_tabulate, parag_table, path_schema)
     offers_table = offer.create_offer_table(offers_table, cust, build, bom_table, content, offer_path, path_schema)
     return (cust_table, build_table, prod_table, offers_table, parag_table)   
@@ -526,19 +533,19 @@ class CLI:
         country = click.prompt('country (default: {}) '.format(build.country), default=build.country)
         return(street, number, postal_code, city, country)
             
-    def select_client(cust_table, offer):
+    def select_client(cust_table, build_table, offers_table, parag_table, prod_table, offer):
         cust = Customer()
         click.clear()    
         click.echo(tabulate([['Client - offer ID ' + str(offer.offer_id)]], tablefmt="simple_grid"))
         choice = click.prompt('\n1. Existing Customer 2.Encode new customer 3.Search Customer 4.Abort ', type=click.Choice(['1','2','3','4']))
         if choice == '1':
-            cust_id = click.prompt('\nSélectionner le Customer ID: ', default=list(cust_table.keys()))           
+            cust_id = click.prompt('\nSélectionner le Customer ID: ', type=click.Choice(list(cust_table.keys())))          
             cust.import_cust(cust_id, cust_table)
             click.echo('Result: ' + str(cust))
             click.pause('Enter to continue')
             
         elif choice == '2':
-            cust.define_cust_id
+            cust.define_cust_id(cust_table)
             title, first_name, last_name, company_name, email, phone_number, street, number, postal_code, city, country, customer_type, account_creation_date, VAT, Bank_account = CLI.encode_cust(cust)
             cust.encode_cust(title, first_name, last_name, company_name, email, phone_number, street, number, postal_code, city, country, customer_type, account_creation_date, VAT, Bank_account)
             cust_table = cust.append_cust_table(cust_table)
@@ -565,58 +572,54 @@ class CLI:
             if (s in (j.get('last_name') or '')) or (s in (j.get('company_name') or '')) or (s in (j.get('first_name') or '')):
                 l.append([i, j['first_name'], j['last_name'], j['company_name']])
         if len(l) > 0:
-            click.echo('\n', tabulate(l, headers =['ID', 'Nom', 'Prenom', 'Cny']))
+            print('\n', tabulate(l, headers =['ID', 'Nom', 'Prenom', 'Cny']))
         else:
             click.echo('\n no candidate')
 
     
     '''Select the building for the offer'''
-    def select_building(build_table, cust, offer):   
+    def select_building(cust_table, build_table, offers_table, parag_table, prod_table, cust, offer):   
         build = Building()
         click.clear()
-        click.echo(tabulate([['Building - Offer ID :' + str(offer.offer_id)]], tablefmt="simple_grid"))
+        click.echo(tabulate([['Building - Offer ID: ' + str(offer.offer_id)]], tablefmt="simple_grid"))
     
-        no_build =  CLI.query_building(build_table, cust)
-            
-        if not no_build:
-            exist = click.prompt('\n1.Existing Building 2.Encode new building 3.Abort ', type=click.choice(['1','2','3']))
-
-            x = True
-            while x:
-                if exist == '1':                    
-                    build_id = click.echo('\nBuilding ID: ')
+        build_qty, cust_address =  CLI.query_building(build_table, cust)
+        x = True
+        while x:
+            exist = click.prompt('\n1.Existing Building 2.Encode new building 3.Encode customer Address 4.Abort ', type=click.Choice(['1','2','3','4']))
+            if exist == '1' and len(build_qty) > 0:                    
+                build_id = click.prompt('\nBuilding ID: ', type=click.Choice(build_qty))
+                build.import_build(build_id, build_table)
+                click.echo('Result: ' +  str(build))
+                x = False
+    
+            elif exist == '1' and len(build_qty)== 0: 
+                click.echo('\nNo Existing Building')
                     
-                    if build_id in list(build_table.keys()):
-                        build.import_build(build_id, build_table)
-                        click.echo('Result: ' +  str(build))
-                        x = CLI.match_build_cust(x, cust, build_table, build)
-                    else:
-                        click.echo(build_id + ' is not in building list')
-                        continue
-                        
-                elif exist == '2':
-                    build.encode_cust_address(cust)
-                    x = False
-        
-                else:
-                    if click.confirm('Do you confirm that you want to quit the prg? All previously encoded offers will be saved.'):
-                        save_json(cust_table, build_table, offers_table, parag_table, prod_table)
-                        os.abort()
-                    else:
-                        continue
-                        
-        else :
-            idem = click.confirm('\nEncode customer address? (Y/N): ')
-            if idem:
-                build.encode_cust_address(cust)
-            else:                        
+            elif exist == '2':
+                build.define_build_id(build_table)
                 street, number, postal_code, city, country = CLI.encode_build(build)
                 build.encode_build(street, number, postal_code, city, country, cust)
-
                 build_table = build.append_building_table(build_table)
+                x = False
+    
+            elif exist == '3' and len(cust_address)==0:
+                build.define_build_id(build_table)
+                build.encode_cust_address(cust)
+                build_table = build.append_building_table(build_table)
+                x = False
+    
+            elif exist == '3' and len(cust_address)>0:
+                build.build_id = cust_address[0]
+                build.encode_build(cust.street, cust.number, cust.postal_code, cust.city, cust.country, cust)
+                x = False
+    
+            else:
+                if click.confirm('Do you confirm that you want to quit the prg? All previously encoded offers will be saved.'):
+                    save_json(cust_table, build_table, offers_table, parag_table, prod_table)
+                    os.abort()
     
         return(build_table, build)
-
 
     
     '''check if building is managed by client'''
@@ -631,22 +634,29 @@ class CLI:
     Displays a list of buildings or indicates no buildings found.'''
     def query_building(build_table, cust):
         l = []
-        no_build = False
+        k = []
+        cust_address = []
         for i,j  in build_table.items():
             if cust.cust_id == j['manager']:
-                l.append([i, j['street'], j['number'], j['postal_code'], j['city']])
+                m = [i]
+                for x,y in j.items():
+                    if x in ['street', 'number', 'postal_code', 'city']:
+                        m.append(y)
+                l.append(m)
+                k.append(i)
+                if m[1:] == [cust.street, cust.number, cust.postal_code, cust.city]:
+                    cust_address = m
         if len(l) > 0:
             click.echo('\nListe des immeubles gérés par cust nbr '+ cust. cust_id + '\n--------------------------------------------')
             click.echo((tabulate(l, tablefmt="plain")))
             
         else:
             click.echo("\nPas d'immeuble connu")
-            no_build = True
-        return(no_build)
+        return(k, cust_address)
 
     
     '''Provides options to add existing items, create new products, erase items, exit BOM creation or abort'''
-    def select_bom(prod_table, bom_table, offer):
+    def select_bom(cust_table, build_table, offers_table, parag_table, prod_table, bom_table, offer):
         
         click.clear()
         click.echo(tabulate([['Bill of Materials- Offer ID :' + str(offer.offer_id)]], tablefmt="simple_grid"))
@@ -659,24 +669,30 @@ class CLI:
                 bom_table= CLI.select_prod_item(prod_table, bom_table)
                 
             elif choice == '2':
-                prod_table, bom_table = CLI.creation_prod_item(prod_table, bom)
+                prod_table, bom_table = CLI.creation_prod_item(prod_table, bom_table)
                 
             elif choice == '3':
-                #display bom items table
-                l=[]
-                k= []
-                for i, j in bom_table.items():
-                    l.append([i, j['description'], j['unit_selling_price'], j['qty'], j['discount']])
-                    k.append(i)
-                if len(l) > 0:
-                    click.echo('Items in the offer Bill of Materials')
-                    click.echo('\n', tabulate(l, headers =['Bom ID', 'Description', 'Price', 'Qty', 'Disc' ]))
-                    a = click.prompt('\nItem to erase: ', type=click.Choice(k))
-                    del(bom_table[a])
-                    click.echo('Item is erased.')
+                print(len(bom_table))
+                if len(bom_table) == 0:
+                    click.echo('\nNo item in the BOM')
                 else:
-                    click.echo('\n no content')
-                    
+                    #display bom items table
+                    l=[]
+                    k= []
+                    for i, j in bom_table.items():
+                        l.append([i, j['description'], j['unit_selling_price'], j['qty'], j['discount']])
+                        k.append(i)
+    
+                    click.echo('Items in the offer Bill of Materials')
+                    print('\n', tabulate(l, headers =['Bom ID', 'Description', 'Price', 'Qty', 'Disc' ]))
+                    x= True
+                    while x:
+                        a = click.prompt('\nItem to erase: ', type= int)
+                        if a in k:                        
+                            del(bom_table[a])
+                            click.echo('Item is erased.')
+                            x = False
+                 
             elif choice == '4':
                 CLI.find_prod(prod_table)
                     
@@ -711,10 +727,11 @@ class CLI:
         click.echo('Result : ' +  str(prod))
         bom.encode_bom(prod)
         bom.qty = click.prompt('Qty: ', type=int)
-        bom.discount = click.prompt('Discount (%): ', click.IntRange(min_open = 0, max_open = 100), type=int) 
-        print('disc ', type(bom.discount), ' qty ', type(bom.qty), ' price ', type(bom.unit_selling_price))
+        bom.discount = click.prompt('Discount (%): ', type=click.IntRange(0, 100))
         bom.line_price = bom.qty * bom.unit_selling_price * (1 - bom.discount/100)          
         bom_table = bom.append_bom_table(bom_table)
+        #print(bom_table)
+        #print(len(bom_table))
         
         return(bom_table)
 
@@ -727,37 +744,38 @@ class CLI:
         bom = Bom()
         prod.define_prod_id(prod_table)
         prod.description = click.prompt('\nProd or Service Description: ')
-        prod.unit_selling_price = click.prompt('Selling Price: ', click.FLOAT)
-        prod.unit_cost = click.prompt('Cost: ', click.FLOAT)
+        prod.unit_selling_price = click.prompt('Selling Price: ', type=float)
+        prod.unit_cost = click.prompt('Cost: ', type=float)
         bom.define_bom_id(bom_table)
         bom.description = prod.description
         bom.unit_selling_price = prod.unit_selling_price
         bom.qty = click.prompt('Qty: ', type=int)
-        bom.discount = click.prompt('Discount (%): ', click.IntRange(min_open = 0, max_open = 100), type=int)               
+        bom.discount = click.prompt('Discount (%): ', type=click.IntRange(0, 100))               
         bom.line_price = bom.qty * bom.unit_selling_price * (1 - bom.discount/100)          
         bom_table = bom.append_bom_table(bom_table)
         prod_table = prod.append_prod_table(prod_table)
+        #print(bom_table)
                 
-        return(prod_table, bom)
+        return(prod_table, bom_table)
 
 
     ''' query product list: allows searching by description '''
     def find_prod(prod_table):
         click.echo('\nRecherche produit existant \n --------------------------')
-        s = click.prompt('\nProduct query :')
+        s = click.prompt('\nProduct query')
         l = []
         for i,j  in prod_table.items():
             if (s.lower() in (j.get('description') or '').lower()):
                 l.append([i, j['description'], j['unit_selling_price'], j['unit_cost']])
         if len(l) > 0:
-            click.echo('\n', tabulate(l, headers =['Prod ID', 'Description', 'Price', 'Cost']))
+            print('\n', tabulate(l, headers =['Prod ID', 'Description', 'Price', 'Cost']))
         else:
             click.echo('\n no product')
 
 
     ''' Allows adding existing SOW paragraphs or creating new ones.
     Provides options to add paragraphs, create new paragraphs, erase paragraphs, or exit SOW creation.'''
-    def select_content(parag_table, content, offer):
+    def select_content(cust_table, build_table, offers_table, parag_table, prod_table, content, offer):
     
         clear_screen()  
         click.echo(tabulate([['Statement of Work - Offer ID: ' +  str(offer.offer_id)]], tablefmt="simple_grid"))
@@ -773,22 +791,26 @@ class CLI:
                 
                 
             elif choice == '3':
-                #list parag of the letter
-                l = []
-                k=[]
-                for i,j  in content.items():
-                    l.append([i, j['description'], j['Paragraph'][:40]])
-                    k.append(i)
-                if len(l) > 0:
-                    click.echo('List of paragraphs of the offer\n--------------------------------')
-                    click.echo('\n', tabulate(l, headers =['Content ID', 'Description', 'Paragraph']))
-                    #erase item
-                    a = click.prompt('\nItem to erase: ', type=click.Choice(k))
-                    del(content[a])
-                    click.echo('Item is erased.')
-                else:
-                    click.echo('\n no content')
+                if len(content) == 0:
+                    click.echo('\nNo item in the SOW')
 
+                else:
+                    #display bom items table
+                    l=[]
+                    k= []
+                    for i, j in content.items():
+                        l.append([i, j['description'], j['Paragraph'][:40]])
+                        k.append(i)
+    
+                    click.echo('List of paragraphs of the offer\n--------------------------------')
+                    print('\n', tabulate(l, headers =['Content ID', 'Description', 'Paragraph']))
+                    x= True
+                    while x:
+                        a = click.prompt('\nItem to erase: ', type= int)
+                        if a in k:                        
+                            del(content[a])
+                            click.echo('Item is erased.')
+                            x = False                
 
             elif choice == '4':
                 CLI.find_parag(parag_table)
@@ -839,7 +861,7 @@ class CLI:
         parag.Paragraph = click.prompt('\nSOW Paragraph: ')
         sow.Paragraph = parag.Paragraph
         elt_count = parag.Paragraph.count('{}')
-        click.echo('nbre elt :', elt_count)
+        print('nbre elt: ', str(elt_count))
         for i in range(elt_count):
             clef = click.prompt('Element title ' + str(i+1) + ': ')
             parag.elt[clef] = ''
@@ -854,19 +876,19 @@ class CLI:
     def find_parag(parag_table):
         click.echo('\nRecherche paragraph existant')
         click.echo('----------------------------')
-        s = click.prompt('Paragraph query :')
+        s = click.prompt('Paragraph query:')
         l = []
         for i,j  in parag_table.items():
             if (s.lower() in (j.get('description') or '').lower() or s.lower() in (j.get('Paragraph') or '').lower()):
                 l.append([i, j['description'], j['Paragraph'][:40]])
         if len(l) > 0:
-            click.echo('\n', tabulate(l, headers =['Parag ID', 'Description', 'Paragraph']))
+            print('\n', tabulate(l, headers =['Parag ID', 'Description', 'Paragraph']))
         else:
             click.echo('\n no content')
 
 
     ''' function to change offer content (customer, building, bom items, sow content'''
-    def change_offer(cust, cust_table, build, build_table, bom_table, content, prod_table, parag_table, offer, path_schema):
+    def change_offer(cust, cust_table, build, build_table, bom_table, content, prod_table, parag_table, offer, path_schema, offers_table):
     
         x = True
         while x:    
@@ -874,20 +896,20 @@ class CLI:
     
             if choice == '1':
                 click.echo('\nYour choice: ' + str(cust))
-                cust_table, cust = CLI.select_client(cust_table, offer)
+                cust_table, cust = CLI.select_client(cust_table, build_table, offers_table, parag_table, prod_table, offer)
     
                 y = True
                 while y:
                     y = CLI.match_build_cust(y, cust, build_table, build)
                     if y:
-                        no_build = CLI.query_building(build_table, cust)
-                        build_table, build = CLI.select_building(build_table, cust, offer)
+                        #build_qty, cust_address = CLI.query_building(build_table, cust)
+                        build_table, build = CLI.select_building(cust_table, build_table, offers_table, parag_table, prod_table, cust, offer)
                         y = False
     
             elif choice == '2':
                 click.echo('\nYour choice: ' + str(build))
-                no_build = CLI.query_building(build_table, cust)
-                build_table, build = CLI.select_building(build_table, cust, offer)
+                #build_qty, cust_address = CLI.query_building(build_table, cust)
+                build_table, build = CLI.select_building(cust_table, build_table, offers_table, parag_table, prod_table, cust, offer)
     
             elif choice == '3':
                 header = list(list(bom_table.values())[0].keys())
@@ -897,13 +919,13 @@ class CLI:
                     a = list(str(i)) + list(j.values())[1:4]
                     bom_list.append(a)
     
-                click.echo('\nYour choice: \n', tabulate(bom_list, headers = header))
-                prod_table, bom_table = CLI.select_bom(prod_table, bom_table, offer)
+                print('\nYour choice: \n', tabulate(bom_list, headers = header))
+                prod_table, bom_table = CLI.select_bom(cust_table, build_table, offers_table, parag_table, prod_table, bom_table, offer)
                 
             elif choice == '4':
                 a = [[i, j['description']] for i,j in content.items()]
-                click.echo('\nYour choice: \n', tabulate(a, headers = ['SOW ID', 'Description']))
-                parag_table, content = CLI.select_content(parag_table, content, offer)
+                print('\nYour choice: \n', tabulate(a, headers = ['SOW ID', 'Description']))
+                parag_table, content = CLI.select_content(cust_table, build_table, offers_table, parag_table, prod_table, content, offer)
 
             elif choice == '5':
                 path_schema = crop_image(offer)
@@ -911,7 +933,7 @@ class CLI:
                 image.show()
                 
             elif choice == '6':
-                bom_tabulate = tabulate_bom_table(bom)
+                bom_tabulate = tabulate_bom_table(bom_table)
                 display_offre(bom_tabulate, content, offer, cust, parag_table, build)
     
             elif choice == '7':       
@@ -950,7 +972,7 @@ class CLI:
     
                     c = 0    
                     for a,b in j['Bom'].items():
-                        c +=  b['line price']
+                        c +=  b['line_price']
                     l.append(c)
                     l.append(j['Status'])
                     l.append(j['Created'])
@@ -959,75 +981,8 @@ class CLI:
             click.echo('No identified customers.')
             
         click.echo('\nOffer list :')    
-        click.echo(tabulate(t, headers = ['Id', 'Client', 'Value', 'Status', 'last update']))
+        print(tabulate(t, headers = ['Id', 'Client', 'Value', 'Status', 'last update']))
         return(offer_list)
-
-
-'''crop image from visit document'''
-def crop_image(offer):
-    
-    clear_screen()
-    click.echo(tabulate([['Add Schema- Offer ID: ' +  str(offer.offer_id)]], tablefmt="simple_grid"))
-    
-    #identify available reports and schema
-    click.echo('\nlist of availabe reports and snapshots\n---------------------------------------')
-    os.chdir('Chantiers')
-    click.echo(os.listdir())
-
-    y = True
-    while y:
-        path_schema = input('\nEncode file to load: ')
-        if path_schema not in os.listdir():
-            click.echo('This file does not exist')
-        else:
-            y = False
-    
-    type_image = input('\n1.image (jpg, png) , 2.rapport standard (pdf) ')
-
-    x = True
-    while x: 
-        if type_image not in ['1', '2']:
-            click.echo('Encode properly')
-        else:
-
-            #store already croped image
-            if type_image == '1':
-                if path_schema[-3:] not in ['jpg', 'png']:
-                    click.echo(' It is not the goof format')
-                else:
-                    x = False
-
-            #crop image from pdf report
-            elif type_image == '2':
-                if path_schema[-3:] != 'pdf':
-                    click.echo(' It is not the goof format')
-                    
-                else:
-                    reader = PdfReader(path_schema)
-                    page = reader.pages[0]
-                    #click.echo(page.cropbox.upper_right)
-
-                    writer = PdfWriter()
-
-                    page.cropbox.upper_left = ( 100, 220)
-                    page.cropbox.lower_right = ( 350, 50)
-                    writer.add_page(page) 
-              
-                    with open('result.pdf','wb') as fp:
-                        writer.write(fp)
-
-
-                    image = convert_from_path('result.pdf', use_cropbox=True)
-                    image[0].save('Image.jpg', 'JPEG')
-                    path_schema = 'Image.jpg'
-                    os.remove("result.pdf")
-                    x= False
-
-    #load final schema in dedicated schma folder and return path
-    new_path_schema = 'Schema/schema '+ str(offer.offer_id) + path_schema[-4:]
-    os.chdir('..')
-    os.rename('Chantiers/{0}'.format(path_schema), new_path_schema)
-    return(new_path_schema)
 
 
     'approve/modify offers'
@@ -1045,8 +1000,14 @@ def crop_image(offer):
             if choice == '1':
                 offer_id = click.prompt('\nOffer ID: ', type=click.Choice(list(offers_table.keys())))
                 offer.import_offer(offer_id, offers_table)
-                bom_tabulate = tabulate_bom_table(bom)
-                display_offre(bom_tabulate, offer.Sow, offer, offer.Customer, parag_table, offer.Building)
+                bom_tabulate = tabulate_bom_table(offer.Bom)
+
+                cust = Customer()
+                cust.import_cust(offer.Customer, cust_table)
+                build = Building()
+                build.import_build(offer.Building, build_table)
+
+                display_offre(bom_tabulate, offer.SOW, offer, cust, parag_table, build)
                 image = Image.open(offer.Schema)
                 image.show()
                 
@@ -1080,10 +1041,10 @@ def crop_image(offer):
                     cust = Customer()
                     cust.import_cust(offer.Customer, cust_table)
                     body = cust.title + ' ' + cust.first_name + ' ' + cust.last_name + '\n' + parag_table['17']['Paragraph'].format(cust.street, cust.number, cust.postal_code, cust.city)
-                    click.echo(offer.Path, type(offers.Path))
+                    print(offer.Path, type(offer.Path))
                     subprocess.run(['libreoffice', '--headless', '--convert-to', 'pdf', offer.Path, '--outdir', 'Letters'])
                     attach = offer.Path[:-4] + 'pdf'
-                    click.echo('attachement: ', attach)
+                    print('attachement: ', attach)
                     titre = 'Kanalis offer ' + str(offer.offer_id)
                     send_offer(cust.title, cust.email, body, attach)
                     click.echo('Offer '+ str(offer.offer_id) + ' is sent!')
@@ -1104,15 +1065,77 @@ def crop_image(offer):
         return(cust_table, build_table, offers_table, parag_table, prod_table)  
             
 
-'''create BOM table with pricing that will be integrated in the offer discplay and letter'''
+'''crop image from visit document'''
+def crop_image(offer):
+    
+    clear_screen()
+    click.echo(tabulate([['Add Schema- Offer ID: ' +  str(offer.offer_id)]], tablefmt="simple_grid"))
+    
+    #identify available reports and schema
+    click.echo('\nlist of availabe reports and snapshots\n---------------------------------------')
+    os.chdir('Chantiers')
+    click.echo(os.listdir())
+
+    y = True
+    while y:
+        path_schema = input('\nEncode file to load: ')
+        if path_schema not in os.listdir():
+            click.echo('This file does not exist')
+        else:
+            y = False
+    
+    type_image = click.prompt('\n1.image (jpg, png) , 2.rapport standard (pdf) ', type=click.Choice(['1', '2']))
+
+    x = True
+    while x: 
+        if type_image == '1':
+            if path_schema[-3:] not in ['jpg', 'png']:
+                click.echo(' It is not the goof format')
+            else:
+                x = False
+
+        #crop image from pdf report
+        elif type_image == '2':
+            if path_schema[-3:] != 'pdf':
+                click.echo(' It is not the goof format')
+                
+            else:
+                reader = PdfReader(path_schema)
+                page = reader.pages[0]
+
+                writer = PdfWriter()
+
+                page.cropbox.upper_left = ( 100, 220)
+                page.cropbox.lower_right = ( 350, 50)
+                writer.add_page(page) 
+          
+                with open('result.pdf','wb') as fp:
+                    writer.write(fp)
+
+
+                image = convert_from_path('result.pdf', use_cropbox=True)
+                image[0].save('Image.jpg', 'JPEG')
+                path_schema = 'Image.jpg'
+                os.remove("result.pdf")
+                x= False
+
+    #load final schema in dedicated schma folder and return path
+    new_path_schema = 'Schema/schema '+ str(offer.offer_id) + path_schema[-4:]
+    os.chdir('..')
+    os.rename('Chantiers/{0}'.format(path_schema), new_path_schema)
+    return(new_path_schema)
+
+
+'''create BOM table with pricing that will be integrated in the offer display and letter'''
 def tabulate_bom_table(bom_table):
     header = list(list(bom_table.values())[0].keys())[1:]
     header[1] = 'Unit Price'
+    header[3] = 'Disc'
     bom_list= []
     for i in bom_table.values():
         a = list(i.values())[1:]
         bom_list.append(a)
-    bom_list
+    #bom_list
     
     for i in bom_list:
         i[1] = "{:.2f} €".format(i[1])
@@ -1130,7 +1153,7 @@ def tabulate_bom_table(bom_table):
     bom_list.append([' ', ' ', ' ', 'Total HTVA', "{:.2f} €".format(tot_htva)])
     bom_list.append([' ', ' ', ' ', 'TVA', "{:.2f} €".format(tva)])
     bom_list.append([' ', ' ', ' ', 'Total TVAC', "{:.2f} €".format(tot_tvac)])
-    bom_tabulate = tabulate(bom_list, headers = header, tablefmt="orgtbl", colalign = ('left', 'right', 'left' , 'left' ,'right'), floatfmt="{:.2f} €", maxcolwidths=[15, 10, None, None, None])            
+    bom_tabulate = tabulate(bom_list, headers = header, tablefmt="orgtbl", colalign = ('left', 'right', 'left' , 'left' ,'right'), floatfmt="{:.2f} €", maxcolwidths=[15, 10, 6, 12, 10])            
     return(bom_tabulate)
 
 
@@ -1252,7 +1275,7 @@ def create_letter(cust_table, cust, bom_table, content, build_table, build, offe
     doc.add_heading('Bill of Materials', level=1)
         
     # Add Bom table
-    paragraph = doc.add_paragraph(bom_table)
+    paragraph = doc.add_paragraph(bom_tabulate)
     paragraph_format = paragraph.paragraph_format
     paragraph_format.keep_together
         
@@ -1262,7 +1285,7 @@ def create_letter(cust_table, cust, bom_table, content, build_table, build, offe
     #closing_text.font.size = Pt(12)
     
     # Save the document
-    name_offer = offer_id + '.docx'
+    name_offer = offer.offer_id + '.docx'
     os.chdir('Letters')
     doc.save(name_offer)
     offer_path = 'Letters/' + name_offer

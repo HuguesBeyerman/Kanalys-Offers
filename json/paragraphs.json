@@ -30,18 +30,18 @@
         "description": "analyse vid\u00e9o",
         "Paragraph": "Maecenas interdum vestibulum ante sit amet {0} dignissim. Aenean sit amet sem id dolor efficitur suscipit sit amet {1} id risus. Cras fringilla ex non velit malesuada, vel vestibulum ligula blandit. Aenean gravida purus in diam {2} vulputate tincidunt. Integer mollis mauris at ex venenatis, eget hendrerit nisi tempus. Aliquam tincidunt sapien sit amet erat euismod congue. Duis scelerisque orci vitae leo facilisis, sit amet suscipit arcu eleifend. Praesent vel vestibulum ligula, non sollicitudin nisi. In sagittis fermentum purus, at viverra est gravida eget. Phasellus mollis ante ac libero fermentum congue.",
         "elt": {
-            "0": "longueur",
-            "1": "largeur",
-            "2": "hauteur"
+            "0": "45",
+            "1": "3",
+            "2": "5"
         }
     },
     "5": {
         "description": "d\u00e9bouchage",
         "Paragraph": "Vivamus elementum orci ut lacus interdum auctor. Aliquam {0} scelerisque enim at viverra viverra. Etiam gravida sodales mi, at pretium {1} leo consectetur nec. Suspendisse finibus sem ac purus consectetur, at pulvinar magna condimentum. Donec {2} suscipit, turpis et vehicula efficitur, sem libero luctus lacus, ac rhoncus mi odio et nisi. Phasellus iaculis, eros sed facilisis tincidunt, dui tortor cursus nisi, sit amet rhoncus ex mauris id metus. Integer feugiat vel tortor sit amet convallis. Fusce bibendum arcu vitae velit pharetra malesuada. Nulla facilisi. Aenean sed metus et lectus finibus malesuada.",
         "elt": {
-            "0": "longueur",
-            "1": "largeur",
-            "2": "hauteur"
+            "0": "3",
+            "1": "54",
+            "2": "2"
         }
     },
     "6": {
@@ -57,9 +57,9 @@
         "description": "pompage",
         "Paragraph": "Sed vitae urna non enim vehicula vehicula. Nulla {0} gravida gravida velit, eget molestie lacus malesuada sit amet. Donec malesuada {1} felis ac vehicula gravida. In fermentum tellus nec dui sagittis faucibus. Cras sed ipsum tincidunt, volutpat nisi ut, tincidunt erat. Nam non arcu vel mauris facilisis malesuada at sed nunc. Proin suscipit magna sit amet diam aliquam, sit amet lacinia neque consequat. {2} Pellentesque quis nulla sit amet odio facilisis convallis at et lorem. Fusce vehicula felis velit, sit amet facilisis erat iaculis in. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.",
         "elt": {
-            "0": "longueur",
-            "1": "largeur",
-            "2": "hauteur"
+            "0": "3",
+            "1": "2",
+            "2": "6"
         }
     },
     "8": {

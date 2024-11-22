@@ -31,14 +31,6 @@
         "country": "Belgium",
         "manager": "4"
     },
-    "5": {
-        "street": "Rue du Tr\u00f4ne",
-        "number": 42,
-        "postal_code": "1050",
-        "city": "Ixelles",
-        "country": "Belgium",
-        "manager": "4"
-    },
     "6": {
         "street": "Place du Luxembourg",
         "number": 7,
@@ -183,5 +175,37 @@
         "country": "Latvia",
         "manager": "6",
         "account_creation_date": "01-11-24"
+    },
+    "": {
+        "street": "Sandoval Course Apt. 650",
+        "number": "574",
+        "postal_code": "92204",
+        "city": "Paulaview",
+        "country": "Ukraine",
+        "manager": "8"
+    },
+    "23": {
+        "street": "Sandoval Rapids",
+        "number": "339",
+        "postal_code": "89095",
+        "city": "West Victoriamouth",
+        "country": "Samoa",
+        "manager": "17"
+    },
+    "24": {
+        "street": "Place Jou",
+        "number": "4",
+        "postal_code": "1000",
+        "city": "Bxl",
+        "country": "Be",
+        "manager": "17"
+    },
+    "5": {
+        "street": "Place Jourdan",
+        "number": 7,
+        "postal_code": "1050",
+        "city": "Ixelles",
+        "country": "Belgium",
+        "manager": "2"
     }
 }

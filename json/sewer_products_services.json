@@ -63,5 +63,10 @@
         "description": "Fraisage",
         "unit_selling_price": 120.0,
         "unit_cost": 90.0
+    },
+    "14": {
+        "description": "degraissage",
+        "unit_selling_price": 100.0,
+        "unit_cost": 80.0
     }
 }
